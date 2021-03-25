@@ -1,38 +1,3 @@
-/*
- * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
-
-/*
- *
- *
- *
- *
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
 package java.util.concurrent.locks;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
@@ -43,12 +8,34 @@ import sun.misc.Unsafe;
 /**
  * Provides a framework for implementing blocking locks and related
  * synchronizers (semaphores, events, etc) that rely on
- * first-in-first-out (FIFO) wait queues.  This class is designed to
+ * first-in-first-out (FIFO) wait queues.
+ * 提供一个框架用于实现阻塞锁和基于先入先出等待队列的与锁相关的同步器（如信号量，事件等）。
+ * This class is designed to
  * be a useful basis for most kinds of synchronizers that rely on a
- * single atomic {@code int} value to represent state. Subclasses
+ * single atomic {@code int} value to represent state.
+ * 这个类被设计为一个有用的基类型，可用于大多数类型的同步器，它使用一个原子的整数来表示它的状态。
+ * Subclasses
  * must define the protected methods that change this state, and which
  * define what that state means in terms of this object being acquired
- * or released.  Given these, the other methods in this class carry
+ * or released.
+ * 它的子类必须定义那些修改这个state值的protected方法，还有一些方法说明state如何标识这个对象被获取或释放。
+ * protected boolean tryAcquire(int arg)
+ * protected boolean tryRelease(int arg)
+ * protected int tryAcquireShared(int arg)
+ * protected boolean tryReleaseShared(int arg)
+ *
+ * 参考代码：ThreadPoolExecutor.Worker
+ * <pre>
+ *     // Lock methods
+ *     //
+ *     // The value 0 represents the unlocked state.
+ *     // The value 1 represents the locked state.
+ *     
+ *     protected boolean isHeldExclusively() {
+ *         return getState() != 0;
+ *     }
+ * </pre>
+ * Given these, the other methods in this class carry
  * out all queuing and blocking mechanics. Subclasses can maintain
  * other state fields, but only the atomically updated {@code int}
  * value manipulated using methods {@link #getState}, {@link
