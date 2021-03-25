@@ -14,6 +14,7 @@ import sun.misc.Unsafe;
  * be a useful basis for most kinds of synchronizers that rely on a
  * single atomic {@code int} value to represent state.
  * 这个类被设计为一个有用的基类型，可用于大多数类型的同步器，它使用一个原子的整数来表示它的状态。
+ * 还有一个AbstractQueuedLongSynchronizer是用long作为state的类型，仅此不同。
  * Subclasses
  * must define the protected methods that change this state, and which
  * define what that state means in terms of this object being acquired
