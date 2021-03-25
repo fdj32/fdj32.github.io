@@ -37,7 +37,9 @@ import sun.misc.Unsafe;
  *     }
  * </pre>
  * Given these, the other methods in this class carry
- * out all queuing and blocking mechanics. Subclasses can maintain
+ * out all queuing and blocking mechanics.
+ * 只要提供了这些方法，这个类的其他方法就可以实现所有的排队和阻塞机制。
+ * Subclasses can maintain
  * other state fields, but only the atomically updated {@code int}
  * value manipulated using methods {@link #getState}, {@link
  * #setState} and {@link #compareAndSetState} is tracked with respect
