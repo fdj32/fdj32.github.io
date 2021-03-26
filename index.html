@@ -9,6 +9,17 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/1.9.9/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
     <title>Nick Feng’s Note</title>
+    <script>
+        function randomColor() {
+            var r = Math.floor(Math.random() * 128) + 128;
+            var g = Math.floor(Math.random() * 128) + 128;
+            var b = Math.floor(Math.random() * 128) + 128;
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+        $(() => {
+            document.body.style.backgroundColor = randomColor();
+        })();
+    </script>
 </head>
 
 <body>
