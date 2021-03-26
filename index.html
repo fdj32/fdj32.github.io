@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.slim.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/1.9.9/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
@@ -18,7 +19,7 @@
         }
         $(() => {
             document.body.style.backgroundColor = randomColor();
-        })();
+        });
     </script>
 </head>
 
@@ -26,11 +27,11 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Java</div>
+                <div class="card animate__animated animate__pulse">
+                    <div class="card-header animate__animated animate__flash">Java</div>
                     <div class="card-body">
                         <ol>
-                            <li>juc.AQS: AbstractQueuedSynchronizer</li>
+                            <li class="animate__animated animate__bounce">juc.AQS: AbstractQueuedSynchronizer</li>
                         </ol>
                     </div>
                 </div>
