@@ -155,30 +155,41 @@ import sun.misc.Unsafe;
  * 这些方法默认都是抛出一个UOE异常。
  * Implementations of these methods
  * must be internally thread-safe, and should in general be short and
- * not block. Defining these methods is the <em>only</em> supported
- * means of using this class. All other methods are declared
+ * not block.
+ * 这些方法的实现必须是线程安全的，且尽量短，不阻塞。
+ * Defining these methods is the <em>only</em> supported
+ * means of using this class.
+ * 使用这个类只能是通过定义这些方法。
+ * All other methods are declared
  * {@code final} because they cannot be independently varied.
+ * 其他的方法都是被声明为不可覆盖{@code final}，因为他们不能独立变化。
  *
  * <p>You may also find the inherited methods from {@link
  * AbstractOwnableSynchronizer} useful to keep track of the thread
- * owning an exclusive synchronizer.  You are encouraged to use them
+ * owning an exclusive synchronizer.
+ * 你也许能找到继承自AOS的方法，用于跟踪占有独占同步器的线程。
+ * You are encouraged to use them
  * -- this enables monitoring and diagnostic tools to assist users in
  * determining which threads hold locks.
+ * 希望你能使用好他们，这能是监视和诊断工具来帮助用户确定哪些线程持有锁。
  *
  * <p>Even though this class is based on an internal FIFO queue, it
- * does not automatically enforce FIFO acquisition policies.  The core
+ * does not automatically enforce FIFO acquisition policies.
+ * 即使这个类是基于一个内部先入先出队列，它也没有自动强制遵守先入先出获取策略。
+ * The core
  * of exclusive synchronization takes the form:
- *
+ * 独占同步器的核心是像这样实现的:
+ * 
  * <pre>
  * Acquire:
- *     while (!tryAcquire(arg)) {
- *        <em>enqueue thread if it is not already queued</em>;
- *        <em>possibly block current thread</em>;
+ *     while (!tryAcquire(arg)) { // 获取同步器失败
+ *        <em>enqueue thread if it is not already queued</em>; // 线程入队，如果没有的话
+ *        <em>possibly block current thread</em>; // 可能需要阻塞当前线程
  *     }
  *
  * Release:
- *     if (tryRelease(arg))
- *        <em>unblock the first queued thread</em>;
+ *     if (tryRelease(arg)) // 释放同步器成功
+ *        <em>unblock the first queued thread</em>; // 不再阻塞第一个排队线程
  * </pre>
  *
  * (Shared mode is similar but may involve cascading signals.)
