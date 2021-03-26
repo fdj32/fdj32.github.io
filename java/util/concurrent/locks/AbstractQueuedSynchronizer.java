@@ -44,16 +44,29 @@ import sun.misc.Unsafe;
  * value manipulated using methods {@link #getState}, {@link
  * #setState} and {@link #compareAndSetState} is tracked with respect
  * to synchronization.
- *
+ * 子类可以维护其他状态字段，但是只有这个原子更新的整数state是用于同步跟踪的，
+ * 它使用{@link #getState}, {@link #setState} and {@link #compareAndSetState} 管理。
  * <p>Subclasses should be defined as non-public internal helper
  * classes that are used to implement the synchronization properties
- * of their enclosing class.  Class
+ * of their enclosing class.
+ * 子类应该被定义为不公开的内部帮助类，用于实现它的外围类的同步属性。
+ * 如Sync，FairSync，NonfairSync，ThreadPoolExecutor.Worker
+ * Class
  * {@code AbstractQueuedSynchronizer} does not implement any
- * synchronization interface.  Instead it defines methods such as
+ * synchronization interface.
+ * AQS 类不实现任何同步接口。
+ * Instead it defines methods such as
  * {@link #acquireInterruptibly} that can be invoked as
  * appropriate by concrete locks and related synchronizers to
  * implement their public methods.
- *
+ * 它定义了一些诸如{@link #acquireInterruptibly}的方法，能被具体的锁和相关的同步器酌情调用来实现他们的公开方法。
+ * 如 ReentrantLock.lockInterruptibly(), 锁的lockInterruptibly调用同步器的acquireInterruptibly(int),
+ * 然后调用到AQS的acquireInterruptibly(int)
+ * <pre>
+ *     public void lockInterruptibly() throws InterruptedException {
+ *         sync.acquireInterruptibly(1);
+ *     }
+ * </pre>
  * <p>This class supports either or both a default <em>exclusive</em>
  * mode and a <em>shared</em> mode. When acquired in exclusive mode,
  * attempted acquires by other threads cannot succeed. Shared mode
