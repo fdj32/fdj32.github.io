@@ -203,6 +203,8 @@ import sun.misc.Unsafe;
  * define {@code tryAcquire} and/or {@code tryAcquireShared} to
  * disable barging by internally invoking one or more of the inspection
  * methods, thereby providing a <em>fair</em> FIFO acquisition order.
+ * 但是，你也可以，如果想要的话，定义方法{@code tryAcquire} and/or {@code tryAcquireShared}
+ * 通过内部调用一个或多个检查方法来禁止挤占，从而提供了一个公平的先入先出获取顺序。
  * In particular, most fair synchronizers can define {@code tryAcquire}
  * to return {@code false} if {@link #hasQueuedPredecessors} (a method
  * specifically designed to be used by fair synchronizers) returns
