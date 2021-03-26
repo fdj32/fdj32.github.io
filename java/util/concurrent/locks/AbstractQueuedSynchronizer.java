@@ -193,6 +193,7 @@ import sun.misc.Unsafe;
  * </pre>
  *
  * (Shared mode is similar but may involve cascading signals.)
+ * 共享模式与此类似，但可能会引入级联信号，PROPAGATE
  *
  * <p id="barging">Because checks in acquire are invoked before
  * enqueuing, a newly acquiring thread may <em>barge</em> ahead of
