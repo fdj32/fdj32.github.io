@@ -374,25 +374,44 @@ public abstract class AbstractQueuedSynchronizer
     protected AbstractQueuedSynchronizer() { }
 
     /**
-     * Wait queue node class.
+     * Wait queue node class. 等待队列节点类
      *
      * <p>The wait queue is a variant of a "CLH" (Craig, Landin, and
-     * Hagersten) lock queue. CLH locks are normally used for
-     * spinlocks.  We instead use them for blocking synchronizers, but
+     * Hagersten) lock queue.
+     * 这个等待队列是一个CLH锁队列的变种。
+     * CLH locks are normally used for
+     * spinlocks.
+     * CLH锁通常被当做自旋锁使用。
+     * We instead use them for blocking synchronizers, but
      * use the same basic tactic of holding some of the control
-     * information about a thread in the predecessor of its node.  A
-     * "status" field in each node keeps track of whether a thread
-     * should block.  A node is signalled when its predecessor
-     * releases.  Each node of the queue otherwise serves as a
+     * information about a thread in the predecessor of its node.
+     * 我们把这些用作阻塞同步器，但是使用相同的基本做法，在前任节点中持有一些线程控制信息。
+     * A "status" field in each node keeps track of whether a thread
+     * should block.
+     * 每个节点中的status字段跟踪一个线程是否应该被阻塞。
+     * A node is signalled when its predecessor
+     * releases.
+     * 一个节点被唤醒当它的前任节点释放。
+     * Each node of the queue otherwise serves as a
      * specific-notification-style monitor holding a single waiting
-     * thread. The status field does NOT control whether threads are
-     * granted locks etc though.  A thread may try to acquire if it is
-     * first in the queue. But being first does not guarantee success;
-     * it only gives the right to contend.  So the currently released
+     * thread.
+     * 除非队列中每一个节点表现为一个特定通知样式的监视器，持有单个等待线程。
+     * The status field does NOT control whether threads are
+     * granted locks etc though.
+     * 这个状态字段不控制线程是否被授予锁。
+     * A thread may try to acquire if it is
+     * first in the queue.
+     * 如果线程出于队列头，它将尝试获取锁。
+     * But being first does not guarantee success;
+     * it only gives the right to contend.
+     * 但是排第一并不能保证能成功，它只给与参加竞争的机会。
+     * So the currently released
      * contender thread may need to rewait.
+     * 所以当前释放的竞争线程可能需要重新等待。
      *
      * <p>To enqueue into a CLH lock, you atomically splice it in as new
      * tail. To dequeue, you just set the head field.
+     * CLH 锁的入队，你需要原子的设置当前节点为队尾，出队只需要设置头节点。
      * <pre>
      *      +------+  prev +-----+       +-----+
      * head |      | <---- |     | <---- |     |  tail
