@@ -197,7 +197,9 @@ import sun.misc.Unsafe;
  *
  * <p id="barging">Because checks in acquire are invoked before
  * enqueuing, a newly acquiring thread may <em>barge</em> ahead of
- * others that are blocked and queued.  However, you can, if desired,
+ * others that are blocked and queued.
+ * 因为在acquire的逻辑中，先执行检查后执行入队，一个新近抢占线程可能会比其他阻塞中和排队中的线程先行挤占。
+ * However, you can, if desired,
  * define {@code tryAcquire} and/or {@code tryAcquireShared} to
  * disable barging by internally invoking one or more of the inspection
  * methods, thereby providing a <em>fair</em> FIFO acquisition order.
