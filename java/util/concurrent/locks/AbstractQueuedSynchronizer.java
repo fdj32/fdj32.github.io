@@ -219,35 +219,53 @@ import sun.misc.Unsafe;
  * While this is not guaranteed to be fair or starvation-free, earlier
  * queued threads are allowed to recontend before later queued
  * threads, and each recontention has an unbiased chance to succeed
- * against incoming threads.  Also, while acquires do not
+ * against incoming threads.
+ * 虽然这不能保证公平或者避免线程饿死，先入队线程被允许先于后入队线程重新参与竞争，
+ * 而且先入队线程每次重新参与竞争拥有与后加入进程相同的竞争机会。
+ * Also, while acquires do not
  * &quot;spin&quot; in the usual sense, they may perform multiple
  * invocations of {@code tryAcquire} interspersed with other
- * computations before blocking.  This gives most of the benefits of
+ * computations before blocking.
+ * 另外，while循环调用acquire并不自旋，通常意义上，他们可能执行多次调用{@code tryAcquire},
+ * 在阻塞之前执行散布着一些其他的计算逻辑。
+ * This gives most of the benefits of
  * spins when exclusive synchronization is only briefly held, without
- * most of the liabilities when it isn't. If so desired, you can
+ * most of the liabilities when it isn't.
+ * 当同步器只是被短暂持有的时候，这就能享受到自旋锁的大部分好处，却不会遭遇到它的缺点。
+ * If so desired, you can
  * augment this by preceding calls to acquire methods with
  * "fast-path" checks, possibly prechecking {@link #hasContended}
  * and/or {@link #hasQueuedThreads} to only do so if the synchronizer
  * is likely not to be contended.
+ * 如果需要的话，你能通过在调用acquire方法之前使用快速通道检查来增加这个功能，
+ * 可能是使用方法{@link #hasContended} and/or {@link #hasQueuedThreads}方法预先检查，
+ * 如果同步器貌似不是出于竞争状态，只需要这样做即可。
  *
  * <p>This class provides an efficient and scalable basis for
  * synchronization in part by specializing its range of use to
  * synchronizers that can rely on {@code int} state, acquire, and
- * release parameters, and an internal FIFO wait queue. When this does
+ * release parameters, and an internal FIFO wait queue.
+ * 这个类为同步提供了一个高效的、可扩展的基础，通过定制依赖整数状态、获取释放参数、和一个内部先入先出等待队列的同步器。
+ * When this does
  * not suffice, you can build synchronizers from a lower level using
  * {@link java.util.concurrent.atomic atomic} classes, your own custom
  * {@link java.util.Queue} classes, and {@link LockSupport} blocking
  * support.
+ * 如果这还不足够，你能基于更加低层的技术来打造同步器，比如使用原子操作类，自定义的队列和锁阻塞支持。
  *
  * <h3>Usage Examples</h3>
  *
  * <p>Here is a non-reentrant mutual exclusion lock class that uses
  * the value zero to represent the unlocked state, and one to
- * represent the locked state. While a non-reentrant lock
+ * represent the locked state.
+ * 这里是一个非重入互斥独占锁类，它使用0值表示未锁状态，1表示已锁状态。
+ * While a non-reentrant lock
  * does not strictly require recording of the current owner
  * thread, this class does so anyway to make usage easier to monitor.
+ * 虽然非重入锁不需要明确要求记录当前持有线程，这个类仍然实现了它，这使得监视更加方便。
  * It also supports conditions and exposes
  * one of the instrumentation methods:
+ * 它也支持竞争条件和暴露一个装配方法
  *
  *  <pre> {@code
  * class Mutex implements Lock, java.io.Serializable {
@@ -310,8 +328,11 @@ import sun.misc.Unsafe;
  * <p>Here is a latch class that is like a
  * {@link java.util.concurrent.CountDownLatch CountDownLatch}
  * except that it only requires a single {@code signal} to
- * fire. Because a latch is non-exclusive, it uses the {@code shared}
+ * fire.
+ * 这里是一个门闩类，很像CountDownLatch，除了他只需要一个信号去触发。
+ * Because a latch is non-exclusive, it uses the {@code shared}
  * acquire and release methods.
+ * 因为一个门闩是非互斥的，它使用共享模式的获取和释放方法。
  *
  *  <pre> {@code
  * class BooleanLatch {
