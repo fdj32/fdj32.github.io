@@ -68,17 +68,31 @@ import sun.misc.Unsafe;
  *     }
  * </pre>
  * <p>This class supports either or both a default <em>exclusive</em>
- * mode and a <em>shared</em> mode. When acquired in exclusive mode,
- * attempted acquires by other threads cannot succeed. Shared mode
- * acquires by multiple threads may (but need not) succeed. This class
+ * mode and a <em>shared</em> mode.
+ * 这个类支持互斥、共享模式的任一种或全部。
+ * When acquired in exclusive mode,
+ * attempted acquires by other threads cannot succeed.
+ * 当以独占模式获取此同步器，其他线程尝试获取将不会成功。
+ * Shared mode
+ * acquires by multiple threads may (but need not) succeed.
+ * 共享模式下，多个线程获取可能但不必是成功的。
+ * This class
  * does not &quot;understand&quot; these differences except in the
  * mechanical sense that when a shared mode acquire succeeds, the next
  * waiting thread (if one exists) must also determine whether it can
- * acquire as well. Threads waiting in the different modes share the
- * same FIFO queue. Usually, implementation subclasses support only
+ * acquire as well.
+ * 这个类并不理解这些差异，除了在机械般的感觉上，当一个共享模式的获取成功后，
+ * 下一个等待线程（如果有的话）必须也要判定是否它也能够获取。
+ * Threads waiting in the different modes share the
+ * same FIFO queue.
+ * 线程等待在不同的模式下共享同一个先入先出队列。
+ * Usually, implementation subclasses support only
  * one of these modes, but both can come into play for example in a
- * {@link ReadWriteLock}. Subclasses that support only exclusive or
+ * {@link ReadWriteLock}.
+ * 通常实现子类只支持独占和共享其中一种模式，但也可以同时支持两种，例如一个读写锁{@link ReadWriteLock}
+ * Subclasses that support only exclusive or
  * only shared modes need not define the methods supporting the unused mode.
+ * 子类如果只支持独占或者共享一种模式，就不需要定义不支持的模式所需的方法了。
  *
  * <p>This class defines a nested {@link ConditionObject} class that
  * can be used as a {@link Condition} implementation by subclasses
@@ -87,23 +101,37 @@ import sun.misc.Unsafe;
  * held with respect to the current thread, method {@link #release}
  * invoked with the current {@link #getState} value fully releases
  * this object, and {@link #acquire}, given this saved state value,
- * eventually restores this object to its previous acquired state.  No
+ * eventually restores this object to its previous acquired state.
+ * 这个类定义了一个嵌套类{@link ConditionObject}，它能作为一个{@link Condition}接口的实现被AQS的子类使用来支持独占模式，
+ * 例如方法{@link isHeldExclusively}表明当前线程是否以独占方式获取到同步器，
+ * 方法{@link #release}，以当前的{@link #getState} 返回值作为入参就会完全释放此同步器，
+ * 还有方法{@link #acquire}，以这个保存好了的state值作为参数，终将会把此同步器恢复到之前的独占获取状态。
+ * No
  * {@code AbstractQueuedSynchronizer} method otherwise creates such a
- * condition, so if this constraint cannot be met, do not use it.  The
+ * condition, so if this constraint cannot be met, do not use it.
+ * 没有一个AQS方法能够创建这样一个条件对象，如果约束不能满足就不要去用它。
+ * The
  * behavior of {@link ConditionObject} depends of course on the
  * semantics of its synchronizer implementation.
- *
+ * {@link ConditionObject} 的行为当然依赖于它的同步器的实现。
+ * 
  * <p>This class provides inspection, instrumentation, and monitoring
  * methods for the internal queue, as well as similar methods for
- * condition objects. These can be exported as desired into classes
+ * condition objects.
+ * 这个类为这个内部队列提供了检查、装配、监视等方法，对于这些条件对象同样如此。
+ * These can be exported as desired into classes
  * using an {@code AbstractQueuedSynchronizer} for their
  * synchronization mechanics.
+ * 这些都可以根据需要导出到需要使用AQS来实现同步机制的类中。
  *
  * <p>Serialization of this class stores only the underlying atomic
  * integer maintaining state, so deserialized objects have empty
- * thread queues. Typical subclasses requiring serializability will
+ * thread queues.
+ * 这个类的序列化只能保存底层原子整数保持状态，所以反序列化对象的线程队列为空。
+ * Typical subclasses requiring serializability will
  * define a {@code readObject} method that restores this to a known
  * initial state upon deserialization.
+ * 特定的子类必须要序列化操作的需要定义一个{@code readObject}方法，来实现通过反序列化来恢复它到已知初始状态
  *
  * <h3>Usage</h3>
  *
@@ -111,7 +139,9 @@ import sun.misc.Unsafe;
  * following methods, as applicable, by inspecting and/or modifying
  * the synchronization state using {@link #getState}, {@link
  * #setState} and/or {@link #compareAndSetState}:
- *
+ * 使用此类作为一个同步器的基础，，需要定义如下方法，如果使用的话，检查同步状态用{@link #getState},
+ * 修改同步状态用{@link #setState} and/or {@link #compareAndSetState}
+ * 
  * <ul>
  * <li> {@link #tryAcquire}
  * <li> {@link #tryRelease}
@@ -121,7 +151,9 @@ import sun.misc.Unsafe;
  * </ul>
  *
  * Each of these methods by default throws {@link
- * UnsupportedOperationException}.  Implementations of these methods
+ * UnsupportedOperationException}.
+ * 这些方法默认都是抛出一个UOE异常。
+ * Implementations of these methods
  * must be internally thread-safe, and should in general be short and
  * not block. Defining these methods is the <em>only</em> supported
  * means of using this class. All other methods are declared
