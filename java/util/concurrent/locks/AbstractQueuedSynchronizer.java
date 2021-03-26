@@ -209,10 +209,13 @@ import sun.misc.Unsafe;
  * to return {@code false} if {@link #hasQueuedPredecessors} (a method
  * specifically designed to be used by fair synchronizers) returns
  * {@code true}.  Other variations are possible.
+ * 实际上，绝大多数公平同步器可以定义{@code tryAcquire}方法如下，
+ * 如果{@link #hasQueuedPredecessors}返回true，则返回false。（这个方法是特地为设计给公平同步器使用的！）
  *
  * <p>Throughput and scalability are generally highest for the
  * default barging (also known as <em>greedy</em>,
  * <em>renouncement</em>, and <em>convoy-avoidance</em>) strategy.
+ * 默认挤占（也被理解为贪心，拒绝，避免护航）策略下，吞吐量和可扩展性通常是最高的。
  * While this is not guaranteed to be fair or starvation-free, earlier
  * queued threads are allowed to recontend before later queued
  * threads, and each recontention has an unbiased chance to succeed
