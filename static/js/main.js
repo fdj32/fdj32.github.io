@@ -84,6 +84,15 @@ var blog_contents = [
             }
         ]
     },
+    {
+        category: 'Apache',
+        contents: [
+            {
+                title: 'Kafka',
+                link: 'blog/2021-04-22.kafka.md'
+            },
+        ]
+    },
 ];
 // animate__* see https://animate.style/
 var animate_styles = ['bounce', 'flash', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat',
