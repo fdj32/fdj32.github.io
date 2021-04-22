@@ -4,6 +4,9 @@ function randomRGBValue() {
 function randomColor() {
     return "rgb(" + randomRGBValue() + "," + randomRGBValue() + "," + randomRGBValue() + ")";
 }
+function randomArrayItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
 var blog_contents = [
     {
         category: 'Java',
@@ -82,4 +85,14 @@ var blog_contents = [
         ]
     },
 ];
-var bounce_styles = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ];
+// animate__* see https://animate.style/
+var animate_styles = ['bounce', 'flash', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat',
+'backInDown', 'backInLeft', 'backInRight', 'backInUp',
+'bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp',
+'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRight',
+'flip', 'flipInX', 'flipInY',
+'lightSpeedInRight', 'lightSpeedInLeft',
+'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight',
+'jackInTheBox', 'rollIn',
+'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp',
+'slideInDown', 'slideInLeft', 'slideInRight', 'slideInUp'];

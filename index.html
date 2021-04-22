@@ -14,65 +14,25 @@
     <script>
         $(() => {
             document.body.style.backgroundColor = randomColor();
-            //$('body').append('<div class="row mx-3"></div>');
-            blog_contents.array.forEach(element => {
-                $('.row').append('<div class="col-md-4">'+element.category+'</div>');
+            $('body').append('<div class="row mx-3"></div>');
+            blog_contents.forEach(element => {
+                var ol = '<ol>';
+                element.contents.forEach(content => {
+                    ol += '<li class="animate__animated animate__' + randomArrayItem(animate_styles) + '"><a href=">' + content.link + '">' + content.title + '</a></li>';
+                });
+                ol += '</ol>';
+
+                var col = '<div class="col-md-3"><div class="card my-3 animate__animated animate__' + randomArrayItem(animate_styles) + '">';
+                col += '<div class="card-header animate__animated animate__' + randomArrayItem(animate_styles) + '">' + element.category + '</div>';
+                col += '<div class="card-body">' + ol + '</div></div></div>';
+
+                $('.row').append(col);
             });
         });
     </script>
 </head>
 
 <body>
-    <div class="row mx-3">
-        <div class="col-md-4">
-            <div class="card my-3 animate__animated animate__pulse">
-                <div class="card-header animate__animated animate__flash">Java</div>
-                <div class="card-body">
-                    <ol>
-                        <li class="animate__animated animate__bounce">j.u.c.l.AQS: <a href="https://github.com/fdj32/fdj32.github.io/blob/master/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">AbstractQueuedSynchronizer</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card my-3 animate__animated animate__rubberBand">
-                <div class="card-header animate__animated animate__shakeX">Blog</div>
-                <div class="card-body">
-                    <ol>
-                        <li class="animate__animated animate__shakeY"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-07.line.separator.awk.sed.md">Line separator in awk/sed</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card my-3 animate__animated animate__jello">
-                <div class="card-header animate__animated animate__heartBeat">Garbage Collection</div>
-                <div class="card-body">
-                    <ol>
-                        <li class="animate__animated animate__backInDown"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-09.gc-01-introduction-garbage-collection-tuning.md">垃圾回收优化简介</a></li>
-                        <li class="animate__animated animate__backInLeft"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-11.gc-02-ergonomics.md">人机工程</a></li>
-                        <li class="animate__animated animate__backInRight"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-12.gc-03-garbage-collector-implementation.md">垃圾收集器实现</a></li>
-                        <li class="animate__animated animate__backInUp"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-13.gc-04-factors-affecting-garbage-collection-performance.md">影响垃圾收集性能的因素</a></li>
-                        <li class="animate__animated animate__bounceIn"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-13.gc-05-available-collectors.md">可用的收集器</a></li>
-                        <li class="animate__animated animate__bounceInDown"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-13.gc-06-parallel-collector.md">并行收集器</a></li>
-                        <li class="animate__animated animate__bounceInLeft"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-16.gc-07-garbage-first-g1-garbage-collector.md">垃圾优先垃圾收集器</a></li>
-                        <li class="animate__animated animate__bounceInRight"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-19.gc-08-garbage-first-garbage-collector-tuning.md">垃圾优先垃圾收集器调优</a></li>
-                        <li class="animate__animated animate__bounceInUp"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-20.gc-09-z-garbage-collector.md">Z 垃圾收集器</a></li>
-                        <li class="animate__animated animate__bounce"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-20.gc-10-other-considerations.md">其他考虑</a></li>
-                    </ol>
-                </div>
-            </div>
-            <div class="card my-3 animate__animated animate__headShake">
-                <div class="card-header animate__animated animate__swing">JVM Guide</div>
-                <div class="card-body">
-                    <ol>
-                        <li class="animate__animated animate__tada"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-08.java-virtual-machine-technology-overview.md">JVM技术概述</a></li>
-                        <li class="animate__animated animate__wobble"><a href="https://github.com/fdj32/fdj32.github.io/blob/master/blog/2021-04-08.jvm-guide-02-compiler-control.md">编译器控制</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
