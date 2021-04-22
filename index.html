@@ -14,7 +14,8 @@
     <script>
         $(() => {
             document.body.style.backgroundColor = randomColor();
-            $('body').append('<div class="row mx-3"></div>');
+
+            var row = '<div class="row mx-3">';
             blog_contents.forEach(element => {
                 var ol = '<ol>';
                 element.contents.forEach(content => {
@@ -26,8 +27,10 @@
                 col += '<div class="card-header animate__animated animate__' + randomArrayItem(animate_styles) + '">' + element.category + '</div>';
                 col += '<div class="card-body">' + ol + '</div></div></div>';
 
-                $('.row').append(col);
+                row += col;
             });
+            row += '</div>';
+            $('body').append(row);
         });
     </script>
 </head>
