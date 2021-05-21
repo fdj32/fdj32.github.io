@@ -93,6 +93,15 @@ var blog_contents = [
             },
         ]
     },
+    {
+        category: 'MySQL',
+        contents: [
+            {
+                title: 'Replication',
+                link: 'blog/2021-05-18.mysql-17-replication.md'
+            },
+        ]
+    },
 ];
 // animate__* see https://animate.style/
 var animate_styles = ['bounce', 'flash', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat',
