@@ -12,6 +12,10 @@ var blog_contents = [
         category: 'Java',
         contents: [
             {
+                title: '垃圾回收',
+                link: 'blog/2021-05-24.gc-index.md'
+            },
+            {
                 title: 'j.u.c.l.AbstractQueuedSynchronizer',
                 link: 'java/util/concurrent/locks/AbstractQueuedSynchronizer.java'
             }
@@ -23,51 +27,6 @@ var blog_contents = [
             {
                 title: 'Line separator in awk/sed',
                 link: 'blog/2021-04-07.line.separator.awk.sed.md'
-            }
-        ]
-    },
-    {
-        category: 'Garbage Collection',
-        contents: [
-            {
-                title: '垃圾回收优化简介',
-                link: 'blog/2021-04-09.gc-01-introduction-garbage-collection-tuning.md'
-            },
-            {
-                title: '人机工程',
-                link: 'blog/2021-04-11.gc-02-ergonomics.md'
-            },
-            {
-                title: '垃圾收集器实现',
-                link: 'blog/2021-04-12.gc-03-garbage-collector-implementation.md'
-            },
-            {
-                title: '影响垃圾收集性能的因素',
-                link: 'blog/2021-04-13.gc-04-factors-affecting-garbage-collection-performance.md'
-            },
-            {
-                title: '可用的收集器',
-                link: 'blog/2021-04-13.gc-05-available-collectors.md'
-            },
-            {
-                title: '并行收集器',
-                link: 'blog/2021-04-13.gc-06-parallel-collector.md'
-            },
-            {
-                title: '垃圾优先垃圾收集器',
-                link: 'blog/2021-04-16.gc-07-garbage-first-g1-garbage-collector.md'
-            },
-            {
-                title: '垃圾优先垃圾收集器调优',
-                link: 'blog/2021-04-19.gc-08-garbage-first-garbage-collector-tuning.md'
-            },
-            {
-                title: 'Z 垃圾收集器',
-                link: 'blog/2021-04-20.gc-09-z-garbage-collector.md'
-            },
-            {
-                title: '其他考虑',
-                link: 'blog/2021-04-20.gc-10-other-considerations.md'
             }
         ]
     },
