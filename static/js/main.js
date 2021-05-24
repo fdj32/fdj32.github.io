@@ -16,6 +16,10 @@ var blog_contents = [
                 link: 'blog/2021-05-24.gc-index.md'
             },
             {
+                title: 'JVM Guide',
+                link: 'blog/2021-05-24.jvm-guide-index.md'
+            },
+            {
                 title: 'j.u.c.l.AbstractQueuedSynchronizer',
                 link: 'java/util/concurrent/locks/AbstractQueuedSynchronizer.java'
             }
@@ -27,19 +31,6 @@ var blog_contents = [
             {
                 title: 'Line separator in awk/sed',
                 link: 'blog/2021-04-07.line.separator.awk.sed.md'
-            }
-        ]
-    },
-    {
-        category: 'JVM Guide',
-        contents: [
-            {
-                title: 'JVM技术概述',
-                link: 'blog/2021-04-08.java-virtual-machine-technology-overview.md'
-            },
-            {
-                title: '编译器控制',
-                link: 'blog/2021-04-08.jvm-guide-02-compiler-control.md'
             }
         ]
     },
