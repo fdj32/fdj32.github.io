@@ -15,7 +15,7 @@
         $(() => {
             document.body.style.backgroundColor = randomColor();
 
-            var row = '<div class="row mx-3">';
+            var row = '<div class="container"><div class="row mx-3">';
             blog_contents.forEach(element => {
                 var ol = '<ol>';
                 element.contents.forEach(content => {
@@ -23,13 +23,13 @@
                 });
                 ol += '</ol>';
 
-                var col = '<div class="col-md-3"><div class="card my-3 animate__animated animate__' + randomArrayItem(animate_styles) + '">';
+                var col = '<div class="col-md-6"><div class="card my-3 animate__animated animate__' + randomArrayItem(animate_styles) + '">';
                 col += '<div class="card-header animate__animated animate__' + randomArrayItem(animate_styles) + '">' + element.category + '</div>';
                 col += '<div class="card-body">' + ol + '</div></div></div>';
 
                 row += col;
             });
-            row += '</div>';
+            row += '</div></div>';
             $('body').append(row);
         });
     </script>
