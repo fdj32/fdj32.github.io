@@ -50,6 +50,10 @@ var blog_contents = [
                 title: 'Replication',
                 link: 'blog/2021-05-18.mysql-17-replication.md'
             },
+            {
+                title: 'MySQL Shell',
+                link: 'blog/2021-06-04.mysql-shell.md'
+            },
         ]
     },
 ];
