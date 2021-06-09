@@ -54,6 +54,10 @@ var blog_contents = [
                 title: 'MySQL Shell',
                 link: 'blog/2021-06-04.mysql-shell.md'
             },
+            {
+                title: 'Troubleshooting Innodb Cluster',
+                link: 'blog/2021-06-09.troubleshooting-innodb-cluster.md'
+            },
         ]
     },
 ];
