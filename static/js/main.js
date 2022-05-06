@@ -12,7 +12,7 @@ var blog_contents = [
         category: 'Java',
         contents: [
             {
-                title: '垃圾回收',
+                title: 'Garbage Collection',
                 link: 'blog/2021-05-24.gc-index.md'
             },
             {
