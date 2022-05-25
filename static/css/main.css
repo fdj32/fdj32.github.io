@@ -21,6 +21,11 @@
   margin-left: 1rem !important;
 }
 
+.my-3 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
 .col-md-6 {
   flex: 0 0 auto;
   width: 50%;
