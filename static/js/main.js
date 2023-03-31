@@ -31,6 +31,10 @@ var blog_contents = [
             {
                 title: 'Line separator in awk/sed',
                 link: 'blog/2021-04-07.line.separator.awk.sed.md'
+            },
+            {
+                title: 'go-admin Release',
+                link: 'blog/2023-03-31.go-admin.release.md'
             }
         ]
     },
