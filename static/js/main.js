@@ -96,11 +96,11 @@ var blog_contents = [
                 link: 'txt/07.nanbeichao.qi.txt'
             },
             {
-                title: '梁',
+                title: '南北朝-梁',
                 link: 'txt/08.nanbeichao.liang.txt'
             },
             {
-                title: '陈',
+                title: '南北朝-陈',
                 link: 'txt/09.nanbeichao.chen.txt'
             },
             {
