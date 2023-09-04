@@ -64,6 +64,79 @@ var blog_contents = [
             },
         ]
     },
+    {
+        category: '资治通鉴',
+        contents: [
+            {
+                title: '周',
+                link: 'txt/01.zhou.txt'
+            },
+            {
+                title: '秦',
+                link: 'txt/02.qin.txt'
+            },
+            {
+                title: '汉',
+                link: 'txt/03.han.txt'
+            },
+            {
+                title: '魏',
+                link: 'txt/04.wei.txt'
+            },
+            {
+                title: '晋',
+                link: 'txt/05.jin.txt'
+            },
+            {
+                title: '南北朝-宋',
+                link: 'txt/06.nanbeichao.song.txt'
+            },
+            {
+                title: '南北朝-齐',
+                link: 'txt/07.nanbeichao.qi.txt'
+            },
+            {
+                title: '梁',
+                link: 'txt/08.nanbeichao.liang.txt'
+            },
+            {
+                title: '陈',
+                link: 'txt/09.nanbeichao.chen.txt'
+            },
+            {
+                title: '隋',
+                link: 'txt/10.sui.txt'
+            },
+            {
+                title: '唐',
+                link: 'txt/11.tang.txt'
+            },
+            {
+                title: '五代-后梁',
+                link: 'txt/12.hou.liang.txt'
+            },
+            {
+                title: '五代-后唐',
+                link: 'txt/13.hou.tang.txt'
+            },
+            {
+                title: '五代-后晋',
+                link: 'txt/14.hou.jin.txt'
+            },
+            {
+                title: '五代-后汉',
+                link: 'txt/15.hou.han.txt'
+            },
+            {
+                title: '五代-后周',
+                link: 'txt/16.hou.zhou.txt'
+            },
+            {
+                title: '进书表',
+                link: 'txt/17.jinshubiao.txt'
+            },
+        ]
+    },
 ];
 // animate__* see https://animate.style/
 var animate_styles = ['bounce', 'flash', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat',
